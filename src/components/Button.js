@@ -1,27 +1,12 @@
 import React, { Component } from 'react';
-import { createStore } from 'redux';
-import { Provider } from 'react-redux';
+import { connect } from 'react-redux';
 
-const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
-
-function reducer(state = 0, action) {
-  switch (action.type) {
-    case 'INC':
-      return state + 1 > 100 ? 100 : state + 1;
-    case 'DEC':
-      return state - 1 < 0 ? 0 : state - 1;
-    default:
-      return state;
-  }
-}
-const handleClick = (e) => {
-  if (e.ctrlKey) store.dispatch({ type: 'DEC' })
-  else store.dispatch({ type: 'INC' });
+const handleClick = (e, props) => {
+  if (e.ctrlKey) props.dispatch({ type: 'DEC' })
+  else props.dispatch({ type: 'INC' });
 }
 
-store.subscribe(() => {
-  console.log(store.getState());
-})
+
 
 
 class Button extends Component {
@@ -29,10 +14,20 @@ class Button extends Component {
   render() {
     return (
       <div>
-        <Provider store={store}><button onClick={handleClick}>Click</button></Provider>
+        <button onClick={(e) => handleClick(e, this.props)}>Click {this.props.counter}</button>
       </div>
     );
   }
 }
 
-export default Button;
+const mapStateToProps = (state) => {
+  return {
+    counter: state.counter,
+  }
+}
+
+// const mapDispatcherToProps = {
+
+// }
+
+export default connect(mapStateToProps)(Button);
