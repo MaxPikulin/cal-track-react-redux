@@ -6,14 +6,14 @@ class MyCals extends Component {
   render() {
     return (
       <div>
-        <label htmlFor="my-cals">My cals:</label><input onChange={(e) => this.props.changeMyCals(e.target.value)} name="my-cals" type="text" value={this.props.val} />
+        <label htmlFor="my-cals">My cals:</label><input onChange={(e) => this.props.changeMyCals(+e.target.value)} name="my-cals" type="text" value={this.props.myCals || ''} />
       </div>
     );
   }
 }
 
 const mapStateToProps = (state) => ({
-  val: state.myCals,
+  myCals: state.myCals,
 })
 
 const mapDispatchToProps = (dispatch) => {

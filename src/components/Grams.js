@@ -6,11 +6,15 @@ class Grams extends Component {
   render() {
     return (
       <div>
-        <label htmlFor="grams">Grams:</label><input onChange={(e) => this.props.changeGrams(+e.target.value)} name="grams" type="text" />
+        <label htmlFor="grams">Grams:</label><input onChange={(e) => this.props.changeGrams(+e.target.value)} name="grams" type="text" value={this.props.grams || ''}/>
       </div>
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  grams: state.grams,
+})
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -18,4 +22,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(Grams);
+export default connect(mapStateToProps, mapDispatchToProps)(Grams);
