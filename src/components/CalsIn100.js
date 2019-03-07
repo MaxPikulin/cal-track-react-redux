@@ -5,9 +5,9 @@ import {changeC100} from '../actions';
 class CalsIn100 extends Component {
   render() {
     return (
-      <>
-        <label htmlFor="cals-in-100">Cals in 100g:</label><input onChange={(e) => this.props.changeC100(e.target.value)} name="cals-in-100" type="text" />
-      </>
+      <div>
+        <label htmlFor="cals-in-100">Cals in 100g:</label><input onChange={(e) => this.props.changeC100(+e.target.value)} name="cals-in-100" type="text" />
+      </div>
     );
   }
 }
