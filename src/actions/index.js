@@ -1,4 +1,4 @@
-import { CHANGE_C100, CHANGE_MYCALS, CHANGE_GRAMS } from "../constants/actionTypes";
+import { CHANGE_C100, CHANGE_MYCALS, CHANGE_GRAMS, CHANGE_NOTE } from "../constants/actionTypes";
 
 const changeC100 = (value) => {
   return {
@@ -18,9 +18,16 @@ const changeMyCals = (value) => {
     payload: value,
   }
 }
+const changeNote = (value) => {
+  return {
+    type: CHANGE_NOTE,
+    payload: value,
+  }
+}
 
 export {
   changeC100,
   changeGrams,
   changeMyCals,
+  changeNote,
 };

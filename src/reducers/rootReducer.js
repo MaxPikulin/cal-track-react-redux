@@ -1,8 +1,9 @@
 const INITIAL_STATE = {
   counter: 0,
-  calsIn100: '',
-  grams: '',
-  myCals: '',
+  calsIn100: 0,
+  grams: 0,
+  myCals: 0,
+  noteCals: 0,
 };
 
 function rootReducer(state = INITIAL_STATE, action) {
@@ -27,18 +28,23 @@ function rootReducer(state = INITIAL_STATE, action) {
         grams: payload,
       }
     case 'CHANGE_MYCALS':
-    if (calsIn100 && payload!==0) {
+      if (calsIn100 && payload !== 0) {
+        return {
+          ...state,
+          grams: Math.floor(100 / (calsIn100 / payload)),
+          myCals: payload,
+        }
+      }
       return {
         ...state,
-        grams: Math.floor(100 / (calsIn100 / payload)),
         myCals: payload,
       }
-    }
+    case 'CHANGE_NOTE':
       return {
         ...state,
-        myCals: payload,
+        noteCals: payload,
       }
-      
+
     case 'INC':
       return {
         ...state,
