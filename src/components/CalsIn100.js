@@ -1,26 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {changeC100} from '../actions';
 
 class CalsIn100 extends Component {
-  changeHandle = (e) => {
-    this.props.dispatch({
-      type: 'CHANGE',
-      payload: e.target.value,
-    })
-  }
   render() {
     return (
       <>
-        <label htmlFor="cals-in-100">Cals in 100g:</label><input onChange={(e) => this.changeHandle(e)} name="cals-in-100" type="text" />
+        <label htmlFor="cals-in-100">Cals in 100g:</label><input onChange={(e) => this.props.changeC100(e.target.value)} name="cals-in-100" type="text" />
       </>
     );
   }
 }
 
-const mapStateToProps = (state) => {
+const mapDispatchToProps = (dispatch) => {
   return {
-
+    changeC100: value => dispatch(changeC100(value)),
   }
 }
 
-export default connect(mapStateToProps)(CalsIn100);
+export default connect(null, mapDispatchToProps)(CalsIn100);
