@@ -5,11 +5,14 @@ import Grams from './components/Grams';
 import MyCals from './components/MyCals';
 import NoteCals from './components/NoteCals';
 import TodayCals from './components/TodayCals';
+import { handleDayChange } from './logic';
 
 const App = () => {
+  
   useEffect(() => {
-    window.addEventListener('focus', () => console.log(new Date()));
+    window.addEventListener('focus', handleDayChange);
   }, []);
+  
   return (
     <div className="App">
       <NoteCals />
