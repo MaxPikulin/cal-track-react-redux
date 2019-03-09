@@ -7,7 +7,7 @@ const TodayCals = ({ todayList }) => {
       <ul>
         {todayList.map((item, i) => (
           <li key={i}>{item}</li>
-        ))}
+        )).reverse()}
       </ul>
     </div>
   );
