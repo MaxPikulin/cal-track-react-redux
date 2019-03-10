@@ -30,6 +30,12 @@ const addTodayEntry = (value) => {
     payload: value,
   }
 }
+const addTodayDate = (value) => {
+  return {
+    type: ADD_TODAY_ENTRY,
+    payload: value,
+  }
+}
 
 export {
   changeC100,
@@ -37,5 +43,6 @@ export {
   changeMyCals,
   changeNote,
   addTodayEntry,
+  addTodayDate,
   
 };

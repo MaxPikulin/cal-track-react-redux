@@ -9,14 +9,14 @@ const INITIAL_STATE = {
 
 function rootReducer(state = INITIAL_STATE, action) {
   const { type, payload } = action;
-  const { calsIn100,todayList } = state;
+  const { calsIn100, todayList } = state;
   switch (type) {
     case 'CHANGE_C100':
       return {
         ...state,
         calsIn100: payload,
       }
-      
+
     case 'CHANGE_GRAMS':
       if (calsIn100) {
         return {
@@ -29,7 +29,7 @@ function rootReducer(state = INITIAL_STATE, action) {
         ...state,
         grams: payload,
       }
-      
+
     case 'CHANGE_MYCALS':
       if (calsIn100 && payload !== 0) {
         return {
@@ -42,17 +42,23 @@ function rootReducer(state = INITIAL_STATE, action) {
         ...state,
         myCals: payload,
       }
-      
+
     case 'CHANGE_NOTE':
       return {
         ...state,
         noteCals: payload,
       }
-      
+
     case 'ADD_TODAY_ENTRY':
       return {
         ...state,
         todayList: todayList.concat(payload),
+      }
+
+    case 'ADD_TODAY_DATE':
+      return {
+        ...state,
+        todayDate: payload,
       }
 
     case 'INC':
